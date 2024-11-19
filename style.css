@@ -1,0 +1,225 @@
+body {
+    margin: 0;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    height: 100vh;
+  }
+  
+  .scene {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+  
+  .sky {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, #87ceeb, #ffffff);
+    transition: background 3s;
+    z-index: 0;
+  }
+  
+  .sun, .moon {
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    transition: transform 3s, opacity 3s;
+  }
+  
+  .sun {
+    background: radial-gradient(circle, #ffeb3b, #f9a825);
+    box-shadow: 0 0 50px 20px rgba(255, 235, 59, 0.7);
+  }
+  
+  .moon {
+    background: radial-gradient(circle, #f5f5f5, #cfd8dc);
+    box-shadow: 0 0 30px 10px rgba(255, 255, 255, 0.3);
+    transform: translateY(-200px);
+    opacity: 0;
+  }
+  
+  .mountains {
+    position: absolute;
+    bottom: 150px;
+    width: 200%;
+    height: 300px;
+    background: linear-gradient(to top, #2c3e50, #4b77be);
+    clip-path: polygon(0 100%, 10% 70%, 20% 100%, 30% 60%, 40% 100%, 50% 80%, 60% 100%, 70% 50%, 80% 100%, 90% 60%, 100% 100%);
+    animation: moveBackground 20s linear infinite;
+    z-index: 1;
+  }
+  
+  .city {
+    position: absolute;
+    bottom: 100px;
+    width: 200%;
+    height: 200px;
+    background: repeating-linear-gradient(
+      to right,
+      #333 0,
+      #333 50px,
+      #444 50px,
+      #444 100px
+    );
+    animation: moveBackground 15s linear infinite;
+    z-index: 2;
+  }
+  
+  .trees {
+    position: absolute;
+    bottom: 100px;
+    width: 200%;
+    height: 100px;
+    background: repeating-linear-gradient(
+      to right,
+      #228b22 0,
+      #228b22 30px,
+      #2e8b57 30px,
+      #2e8b57 60px
+    );
+    clip-path: polygon(0 100%, 10% 60%, 20% 100%, 30% 50%, 40% 100%, 50% 70%, 60% 100%, 70% 40%, 80% 100%, 90% 60%, 100% 100%);
+    animation: moveBackground 10s linear infinite;
+    z-index: 3;
+  }
+  
+  .road {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100px;
+    background: #333;
+    animation: roadMove 5s linear infinite;
+    z-index: 4;
+  }
+  
+  @keyframes moveBackground {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  
+  .road::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    height: 10px;
+    background: #fff;
+    background-image: repeating-linear-gradient(
+      to right,
+      #fff 0,
+      #fff 30px,
+      transparent 30px,
+      transparent 60px
+    );
+    transform: translateY(-50%);
+    animation: dashedMove 2.5s linear infinite;
+  }
+  
+  @keyframes dashedMove {
+    0% { transform: translateY(-50%) translateX(0); }
+    100% { transform: translateY(-50%) translateX(-60px); }
+  }
+  
+  .car {
+    position: absolute;
+    bottom: 120px;
+    left: -200px;
+    width: 200px;
+    height: 100px;
+    animation: drive 5s linear infinite;
+    z-index: 5;
+  }
+  
+  @keyframes drive {
+    0% { left: -200px; }
+    100% { left: 110%; }
+  }
+  
+  .car-body {
+    position: absolute;
+    top: 0;
+    width: 200px;
+    height: 60px;
+    background: linear-gradient(to right, #ff0000, #cc0000);
+    border-radius: 20px;
+    z-index: 2;
+  }
+  
+  .headlights {
+    position: absolute;
+    top: 15px;
+    right: -15px;
+    width: 20px;
+    height: 20px;
+    background: radial-gradient(circle, rgba(255,255,102,1) 0%, rgba(255,255,102,0.3) 70%);
+    border-radius: 50%;
+    z-index: 3;
+  }
+  
+  .windows {
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    width: 160px;
+    height: 30px;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 10px;
+  }
+  
+  .grill {
+    position: absolute;
+    bottom: 10px;
+    left: 20px;
+    width: 40px;
+    height: 10px;
+    background: #333;
+    border-radius: 3px;
+  }
+  
+  .wheel {
+    position: absolute;
+    bottom: -15px;
+    width: 40px;
+    height: 40px;
+    background: #222;
+    border-radius: 50%;
+    z-index: 1;
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  .front-wheel {
+    left: 30px;
+  }
+  
+  .back-wheel {
+    right: 30px;
+  }
+  .buildings {
+    position: absolute;
+    bottom: 100px;
+    width: 300%;
+    height: 150px;
+    background: repeating-linear-gradient(
+      to right,
+      #666 0,
+      #666 50px,
+      #888 50px,
+      #888 100px
+    );
+    clip-path: polygon(0 100%, 5% 60%, 10% 100%, 15% 50%, 20% 100%, 25% 40%, 30% 100%, 35% 70%, 40% 100%, 45% 50%, 50% 100%, 55% 60%, 60% 100%);
+    animation: moveBackground 12s linear infinite;
+    z-index: 2;
+  }
+  
